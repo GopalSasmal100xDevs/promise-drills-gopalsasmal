@@ -2,7 +2,10 @@
   "name": "promise-drills-gopalsasmal",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "testProblem1": "node ./test/testProblem1.js",
+    "testProblem2": "node ./test/testProblem2.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
