@@ -18,17 +18,14 @@ async function createAndDelete(numberOfFiles = 1) {
     .then((paths) => {
       deleteJsonFiles(paths);
     })
-    .catch(() => {});
+    .then(() => {
+      console.log("All files deleted!");
+    })
+    .catch(console.log);
 }
 
-async function createDirectory(directoryFilesPath) {
-  fs.mkdir(directoryFilesPath)
-    .then(() => {
-      console.log("Directory Created!");
-    })
-    .catch((err) => {
-      console.log("Error creating directory " + err);
-    });
+function createDirectory(directoryFilesPath) {
+  return fs.mkdir(directoryFilesPath, { recursive: true });
 }
 
 function generateRandomJsonValues() {
@@ -56,15 +53,9 @@ async function createJsonFiles(numberOfFiles, directoryPath) {
   return filePaths;
 }
 
-async function deleteJsonFiles(paths) {
+function deleteJsonFiles(paths) {
   const deleteFiles = paths.map((file) => fs.unlink(file));
-  Promise.all(deleteFiles)
-    .then(() => {
-      console.log("All files deleted!");
-    })
-    .catch((err) => {
-      console.log("Error Deleting file!");
-    });
+  return Promise.all(deleteFiles);
 }
 
 module.exports = { createAndDelete };

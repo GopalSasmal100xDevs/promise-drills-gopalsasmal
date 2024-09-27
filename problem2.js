@@ -57,25 +57,14 @@ function problem2() {
 
 // 1. Read the given file lipsum.txt
 
-async function readFile(path) {
-  try {
-    const data = await fs.readFile(path, "utf-8");
-    return data;
-  } catch (err) {
-    return err;
-  }
+function readFile(path) {
+  return fs.readFile(path, "utf-8");
 }
 
 // 2. Convert the content to uppercase & write to a new file. Store the name of the new file in filenames.txt
-async function contentToUppercase(data, path) {
+function contentToUppercase(data, path) {
   const uppercaseData = data.toUpperCase();
-  return writeFile(path, uppercaseData)
-    .then(() => {
-      console.log("File content updated to uppercase");
-    })
-    .catch((err) => {
-      console.log("Error " + err);
-    });
+  return writeFile(path, uppercaseData);
 }
 
 // Store file name
