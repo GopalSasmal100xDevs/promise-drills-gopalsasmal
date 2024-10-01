@@ -15,9 +15,7 @@ const directoryFilesPath = path.join(__dirname, "json-files");
 async function createAndDelete(numberOfFiles = 1) {
   createDirectory(directoryFilesPath)
     .then(() => createJsonFiles(numberOfFiles, directoryFilesPath))
-    .then((paths) => {
-      deleteJsonFiles(paths);
-    })
+    .then((paths) => deleteJsonFiles(paths))
     .then(() => {
       console.log("All files deleted!");
     })
